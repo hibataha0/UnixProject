@@ -3,7 +3,7 @@
 $host = 'db'; // Docker Compose service name
 $username = 'root'; // Database username
 $password = '123'; // Database password
-$database = 'mydb'; // Database name
+$database = 'mydb'; // Database name 
 
 try {
     // Establish a connection using PDO
@@ -17,6 +17,7 @@ try {
 $word = '';
 $results = [];
 $error = '';
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['word'])) {
     $word = trim($_POST['word']);
