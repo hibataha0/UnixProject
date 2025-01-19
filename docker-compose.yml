@@ -20,7 +20,7 @@ services:
       - DB_PASS=123
 
   db:
-    image: mysql:5.7
+    image: mysql
     restart: always
     volumes:
       - mysql:/var/lib/mysql
