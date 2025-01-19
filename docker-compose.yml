@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   web:
     build:
@@ -11,9 +13,14 @@ services:
       - db
     networks:
       - mydb
+    environment:
+      - DB_HOST=db      # تأكد من أن هذا المتغير مضبوط بشكل صحيح
+      - DB_NAME=mydb
+      - DB_USER=root
+      - DB_PASS=123
 
   db:
-    image: mysql
+    image: mysql:5.7
     restart: always
     volumes:
       - mysql:/var/lib/mysql
@@ -25,19 +32,24 @@ services:
       MYSQL_DATABASE: mydb
     networks:
       - mydb
+
   phpmyadmin:
-    image: phpmyadmin
+    image: phpmyadmin/phpmyadmin
     restart: always
     ports:
-      - 8081:80
+      - "8081:80"
     depends_on:
       - db
     environment:
-      - PMA_ARBITRARY=1
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: 123
     networks:
       - mydb
+
 networks:
   mydb:
     driver: bridge
+
 volumes:
   mysql:
