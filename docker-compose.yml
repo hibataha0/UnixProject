@@ -1,6 +1,4 @@
-version: '3.8'
-
-services:
+ services:
   web:
     build:
       context: .
@@ -13,7 +11,6 @@ services:
       - db
     networks:
       - mydb
-   
 
   db:
     image: mysql
@@ -21,30 +18,24 @@ services:
     volumes:
       - mysql:/var/lib/mysql
       - "/db:/docker-entrypoint-initdb.d"
-    
     environment:
       MYSQL_ROOT_PASSWORD: 123
       MYSQL_DATABASE: mydb
     networks:
       - mydb
-
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin
     restart: always
     ports:
-      - "8081:80"
+      - 8082:80
     depends_on:
       - db
     environment:
-      PMA_HOST: db
-      PMA_USER: root
-      PMA_PASSWORD: 123
+      - PMA_ARBITRARY=1
     networks:
       - mydb
-
 networks:
   mydb:
     driver: bridge
-
 volumes:
   mysql:
