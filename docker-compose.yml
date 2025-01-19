@@ -13,11 +13,7 @@ services:
       - db
     networks:
       - mydb
-    environment:
-      - DB_HOST=db      # تأكد من أن هذا المتغير مضبوط بشكل صحيح
-      - DB_NAME=mydb
-      - DB_USER=root
-      - DB_PASS=123
+   
 
   db:
     image: mysql
