@@ -13,10 +13,12 @@ try {
     die("Connection failed: " . $e->getMessage());
 }
 
-// Check if form is submitted
+
 $word = '';
 $results = [];
 $error = '';
+
+
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['word'])) {
