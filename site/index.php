@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['word'])) {
 
     if (!empty($word)) {
         try {
-            // Use a prepared statement to prevent SQL injection
+            
             $stmt = $connect->prepare("SELECT synonym FROM dbw WHERE word = :word");
             $stmt->execute(['word' => $word]);
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
