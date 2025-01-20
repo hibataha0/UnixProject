@@ -1,9 +1,9 @@
 <?php
-// Database connection settings
-$host = 'db'; // Docker Compose service name
-$username = 'root'; // Database username
-$password = '123'; // Database password
-$database = 'mydb'; // Database name 
+
+$host = 'db'; 
+$username = 'root'; 
+$password = '123'; 
+$database = 'mydb'; 
 
 try {
     // Establish a connection using PDO
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['word'])) {
     if (!empty($word)) {
         try {
             // Use a prepared statement to prevent SQL injection
-            $stmt = $connect->prepare("SELECT synonym FROM dbw WHERE word = :word");
+            $stmt = $connect->prepare("SELECT synonym FROM dbw1 WHERE word = :word");
             $stmt->execute(['word' => $word]);
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {

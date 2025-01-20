@@ -6,7 +6,7 @@ services:
     volumes:
       - ./site:/var/www/html
     ports:
-      - "80:80"
+      - "8082:80"
     depends_on:
       - db
     networks:
@@ -23,11 +23,12 @@ services:
       MYSQL_DATABASE: mydb
     networks:
       - mydb
+
   phpmyadmin:
     image: phpmyadmin
     restart: always
     ports:
-      - 8081:80
+      - 8083:80
     depends_on:
       - db
     environment:
