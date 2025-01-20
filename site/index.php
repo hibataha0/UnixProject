@@ -217,7 +217,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['word'])) {
         
         <form method="POST">
             <div class="input-group">
-                <label for="word">Enter a word</label>
+                <label for="word">Enter  a  word</label>
                 <input 
                     type="text" 
                     id="word" 
